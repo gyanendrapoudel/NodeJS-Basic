@@ -1,24 +1,26 @@
  body{
      margin: 0;
      padding: 0;
+     background-color: rgb(230, 229, 229);
 }
 a{
     text-decoration: none;
-    color:black;
+    color: black;
+    
 
 }
 header{
     margin-top: 2rem;
     display: flex;
     justify-content: space-between;
+    
 }
 header>div{
     /* flex-shrink: 2; */
     flex-grow: 1;
 
 }
-nav{
- 
+button{
+ width: 100%;
 
-   
 }
