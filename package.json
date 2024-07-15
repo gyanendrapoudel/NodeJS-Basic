@@ -3,6 +3,7 @@
   "version": "1.0.0",
   "description": "no description",
   "main": "app.js",
+  "type": "module",
   "scripts": {
     "dev": "node app.js",
     "test": "echo \"Error: no test specified\" && exit 1"
@@ -11,5 +12,8 @@
   "license": "ISC",
   "dependencies": {
     "express": "^4.19.2"
+  },
+  "devDependencies": {
+    "path": "^0.12.7"
   }
 }
