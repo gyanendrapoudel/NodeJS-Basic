@@ -3,6 +3,7 @@ import path from "path"
 const app = express();
 const PORT = 8000;
 const __dirname = path.resolve()
+import fs from 'fs'
 
 // static files
 app.use(express.static(path.join(__dirname, 'public')))
@@ -27,11 +28,16 @@ app.get("/login",(req,res)=>{
 app.get("/register",(req,res)=>{
     res.sendFile(path.join(__dirname,"src","register.html"))
 })
+const fileName = 'userlist.csv'
 // after submitting with post method
 app.post("/register",(req,res)=>{
  console.log('request body data',req.body)
  console.log('request query data',req.query)
- res.send("data submitted")
+ const {name, password, email}= req.body
+ const str = `${name},${password},${email}`
+ console.log(str)
+ console.log(str.split(','))
+ fs.appendFile(fileName,str,(error)=>{error?console.log(error):res.send("user registered")})
 })
 app.listen(PORT, (error)=>{
     error? console.log(error): console.log(`app is listening ${PORT}` )
