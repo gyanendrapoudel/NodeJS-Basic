@@ -43,8 +43,27 @@ app.get("/login",(req,res)=>{
     res.sendFile(path.join(__dirname,"src","login.html"))
 
 })
+// login validation
 app.post('/login',(req,res)=>{
     const {email, password} = req.body
+    fs.readFile(fileName,'utf-8',(error,data)=>{
+        if(error){
+            console.log(error)
+        }else{
+            const users = data.split("\n")
+            let flag =true;
+            for(let user of users){
+                if(user.split(',').includes(email)&&user.split(',').includes(password)){
+                    res.send(`Welcome ${user}`)
+                    flag=false
+                }
+            }
+            if(flag){
+                res.send("invalid login")
+            }
+
+        }
+    })
     
 })
 //register
